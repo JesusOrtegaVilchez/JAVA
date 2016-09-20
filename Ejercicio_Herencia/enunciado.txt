@@ -1,0 +1,7 @@
+En un centro escolar se pretende gestionar tanto los profesores como los alumnos.
+De ambos se conoce el DNI, el nombre, y los apellidos.
+Además del profesor se conoce su salario y de los alumnos el número de asignaturas matriculadas.
+Utilizar esta información para crear la herencia correspondiente.
+Se pretende aumentar la funcionalidad de este programa añadiendo dos tipos de profesores,Profesor FP del cual se sabe si
+es tutor o no y el numero de visitas a la empresa que realiza, y profesor de la ESO del cual sabemos si es tutor o no
+y al departamento al que pertenece. REALIZAR LAS MODIFICACIONES OPORTUNAS.
