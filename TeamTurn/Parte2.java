@@ -80,7 +80,7 @@ public class Parte2{
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\jesus\\Documents\\android\\calculadora\\fondoCalculadora.jpg"));
+		//frame.setIconImage(Toolkit.getDefaultToolkit().getImage("fondoCalculadora.jpg"));
 		frame.getContentPane().setBackground(new Color(0, 0, 51));
 		frame.setBounds(100, 100, 750, 446);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
