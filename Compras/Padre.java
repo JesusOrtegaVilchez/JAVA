@@ -1,36 +1,36 @@
 package examen_compra_online;
 /*
- * jbutton - acction event
- * jtextcomponent - textevent
- * jtextfield- action event
- * jcombobox item action event
- * jlist - listselection event
- * jcheckbox,jradiobutton - itemselectionevent
- * jmenuitem - action event*/
+ * */
 import java.awt.EventQueue;
 
+import javax.swing.JFrame;
+import java.awt.GridLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+
 import java.awt.Font;
 import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JScrollPane;
 import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JCheckBox;
+import java.awt.FlowLayout;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTextArea;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
-public class Hija {
+public class Padre {
 
-	private JDialog frmListaDeLa;
-	private JTextArea lista_productos = new JTextArea();
-	private JTextField nombre_usuario_de_hija;
-	private JTextField total_a_pagar_en_hija;
-	private JTextField nombre_producto_hija;
-	private JTextField unidad_precio;
+	private JFrame frmCompron;
+	private JTextField nombre_usuario_padre;
+	private JTextField cantidad_aPagar_enPadre;
 	private Padre p;
-
+	private JTextArea carrito_compra_padre;
+	//private JCheckBox chckbxNewCheckBox = new JCheckBox("Tarjeta club Compron");
+	private JCheckBox opcion_descuento;
 	/**
 	 * Launch the application.
 	 */
@@ -38,9 +38,8 @@ public class Hija {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Padre p =  new Padre();
-					Hija window = new Hija(p);
-					window.frmListaDeLa.setVisible(true);
+					Padre window = new Padre();
+					window.frmCompron.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -51,8 +50,8 @@ public class Hija {
 	/**
 	 * Create the application.
 	 */
-	public Hija(Padre p) {
-		this.p = p;
+	public Padre() {
+		p = this;
 		initialize();
 	}
 
@@ -60,172 +59,175 @@ public class Hija {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmListaDeLa = new JDialog();
-		frmListaDeLa.setResizable(false);
-		frmListaDeLa.setTitle("Lista de la Compra");
-		frmListaDeLa.setBounds(100, 100, 633, 365);
-		frmListaDeLa.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		frmListaDeLa.getContentPane().setLayout(null);
+		frmCompron = new JFrame();
+		frmCompron.setTitle("COMPRON");
+		frmCompron.setBounds(100, 100, 471, 404);
+		frmCompron.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmCompron.getContentPane().setLayout(new GridLayout(6,2, 0, 0));
 		
-		JButton finalizar_compra = new JButton("Finalizar Compra");
-		JLabel lblIdentificacionDeUsurario = new JLabel("Identificacion de Usurario");
-		lblIdentificacionDeUsurario.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblIdentificacionDeUsurario.setBounds(30, 44, 156, 14);
-		frmListaDeLa.getContentPane().add(lblIdentificacionDeUsurario);
+		JPanel panel_2 = new JPanel();
+		frmCompron.getContentPane().add(panel_2);
+		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		nombre_usuario_de_hija = new JTextField(p.getNombre_usuario_padre().getText().toString());
-		nombre_usuario_de_hija.setEditable(false);
-		nombre_usuario_de_hija.setBounds(193, 41, 161, 20);
-		frmListaDeLa.getContentPane().add(nombre_usuario_de_hija);
-		nombre_usuario_de_hija.setColumns(10);
+		JLabel lblCompronTuCompra = new JLabel("                COMPRON: TU COMPRA ONLINE");
+		lblCompronTuCompra.setHorizontalAlignment(SwingConstants.LEFT);
+		panel_2.add(lblCompronTuCompra);
+		lblCompronTuCompra.setHorizontalTextPosition(SwingConstants.LEFT);
+		lblCompronTuCompra.setFont(new Font("Tahoma", Font.BOLD, 20));
 		
-		JLabel lblTotalAPagar = new JLabel("Total a pagar (\u20AC) :  ");
-		lblTotalAPagar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblTotalAPagar.setBounds(367, 44, 116, 14);
-		frmListaDeLa.getContentPane().add(lblTotalAPagar);
 		
-		total_a_pagar_en_hija = new JTextField();
-		total_a_pagar_en_hija.setText("0.0");
-		total_a_pagar_en_hija.setEditable(false);
-		total_a_pagar_en_hija.setColumns(10);
-		total_a_pagar_en_hija.setBounds(474, 41, 86, 20);
-		frmListaDeLa.getContentPane().add(total_a_pagar_en_hija);
 		
-		JLabel lblProducto = new JLabel("Producto : ");
-		lblProducto.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblProducto.setBounds(30, 85, 72, 14);
-		frmListaDeLa.getContentPane().add(lblProducto);
+		JPanel panel = new JPanel();
+		frmCompron.getContentPane().add(panel);
+		panel.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		nombre_producto_hija = new JTextField();
-		nombre_producto_hija.setBounds(97, 82, 140, 20);
-		frmListaDeLa.getContentPane().add(nombre_producto_hija);
-		nombre_producto_hija.setColumns(10);
+		JLabel lblNewLabel = new JLabel("Identificacion de Usuario:  ");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel.add(lblNewLabel);
 		
-		JLabel lblCantidadYPreciounidad = new JLabel("Cantidad y precio/unidad : ");
-		lblCantidadYPreciounidad.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblCantidadYPreciounidad.setBounds(247, 85, 161, 14);
-		frmListaDeLa.getContentPane().add(lblCantidadYPreciounidad);
+		nombre_usuario_padre = new JTextField();
+		panel.add(nombre_usuario_padre);
+		nombre_usuario_padre.setColumns(10);
 		
-		JComboBox cantidad_unidad = new JComboBox();
-		cantidad_unidad.setModel(new DefaultComboBoxModel(new String[] {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}));
-		cantidad_unidad.setBounds(408, 82, 55, 20);
-		frmListaDeLa.getContentPane().add(cantidad_unidad);
+		JPanel panel_1 = new JPanel();
+		frmCompron.getContentPane().add(panel_1);
+		panel_1.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		unidad_precio = new JTextField();
-		unidad_precio.setBounds(474, 82, 86, 20);
-		frmListaDeLa.getContentPane().add(unidad_precio);
-		unidad_precio.setColumns(10);
+		JLabel lblNewLabel_1 = new JLabel("Carrito de Compra:  ");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel_1.add(lblNewLabel_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(30, 130, 344, 126);
-		frmListaDeLa.getContentPane().add(scrollPane);
+		panel_1.add(scrollPane);
 		
-		lista_productos = new JTextArea();
-		scrollPane.setViewportView(lista_productos);
+		carrito_compra_padre = new JTextArea();
+		carrito_compra_padre.setEditable(false);
+		scrollPane.setViewportView(carrito_compra_padre);
 		
-		JButton anadir_producto = new JButton("A\u00F1adir producto creado");
-		anadir_producto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(!nombre_producto_hija.getText().equals("") && cantidad_unidad.getSelectedIndex()!= 0 && !unidad_precio.getText().equals("")){
-					String cad1;
-					//el valor del precio sera la cantidad seleccionada por el precio que se le ponga
-					double cantidad_por_precio = cantidad_unidad.getSelectedIndex() * Double.parseDouble(unidad_precio.getText().toString());
-					//se añade al text area de la soguiente manera conservando el producto anterior
-					lista_productos.setText(nombre_producto_hija.getText()+"("+cantidad_unidad.getSelectedIndex()+")"+"  ->  "+cantidad_por_precio+" € "+"\n"+lista_productos.getText());
-					//guardamos en una variable de tipo String el valor del primer producto para ir sumandole los demas valores
-					cad1 = total_a_pagar_en_hija.getText();
-					//se convierte esa cantidad en un valor de tipo double
-					double cantidad1 = Double.parseDouble(cad1);
-					//la suma total sera la cantidad inicial mas las demas cantidades que se añadan 
-					double suma_total = cantidad1 + cantidad_por_precio;
-					//se tranforma el valor double a String 
-					String resultado = String.valueOf(suma_total);
-					//se suelta el valor por pantalla actualizado
-					total_a_pagar_en_hija.setText(resultado);
-					//se reinician los campos
-					nombre_producto_hija.setText("");cantidad_unidad.setSelectedIndex(0);unidad_precio.setText("");//borramos lo escrito
-					//se deja el cursor sobre el nombre de producto para añadir otra vez
-					nombre_producto_hija.grabFocus();
+		JPanel panel_3 = new JPanel();
+		frmCompron.getContentPane().add(panel_3);
+		panel_3.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		JLabel lblNewLabel_2 = new JLabel("Total a pagar (\u20AC):  ");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel_3.add(lblNewLabel_2);
+		
+		cantidad_aPagar_enPadre = new JTextField();
+		cantidad_aPagar_enPadre.setEditable(false);
+		cantidad_aPagar_enPadre.setText("0.0");
+		panel_3.add(cantidad_aPagar_enPadre);
+		cantidad_aPagar_enPadre.setColumns(10);
+		
+		JPanel panel_4 = new JPanel();
+		frmCompron.getContentPane().add(panel_4);
+		panel_4.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		opcion_descuento = new JCheckBox("Tarjeta club Compron");
+		opcion_descuento.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if(opcion_descuento.isSelected()){//si esta seleccionada, la cantidad a pagar es decrementada en un 5%
+					 double total = Double.parseDouble(cantidad_aPagar_enPadre.getText().toString());
+					 double descuento = 0.05;
+					 total = total - total * descuento;
+					 cantidad_aPagar_enPadre.setText(String.valueOf(total));
+				}
+				else
+					if(!opcion_descuento.isSelected()){// si no está seleccionada se vuele a sumar la cantidad restada.
+						double total = Double.parseDouble(cantidad_aPagar_enPadre.getText().toString());
+						 double descuento = 0.0525;
+						 total = total + total * descuento;
+						 cantidad_aPagar_enPadre.setText(String.valueOf(total));
+				}
 			}
-		}
-	});
-		anadir_producto.setBounds(384, 137, 176, 30);
-		frmListaDeLa.getContentPane().add(anadir_producto);
+		});
+		opcion_descuento.setEnabled(false);
+		opcion_descuento.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel_4.add(opcion_descuento);
 		
-		//JButton finalizar_compra = new JButton("Finalizar Compra");
-		finalizar_compra.addActionListener(new ActionListener() {
+		JPanel panel_5 = new JPanel();
+		frmCompron.getContentPane().add(panel_5);
+		
+		JButton btnImprimirTicket = new JButton("Imprimir Ticket");
+		btnImprimirTicket.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//p.setCarrito_compra_padre(lista_productos);
-				p.getCarrito_compra_padre().setText((getLista_productos().getText()));
-				p.getCantidad_aPagar_enPadre().setText((getTotal_a_pagar_en_hija().getText()));
-				if(!getLista_productos().getText().equals(""));
-					p.getOpcion_descuento().setEnabled(true);
+				if(carrito_compra_padre.getText().equals("")){//si el carrito esta vacio no deja imprimir el ticket
+					JOptionPane.showMessageDialog(null, "No se ha realizado ninguna compra","Sin Compra",JOptionPane.ERROR_MESSAGE);
+				}
+				else {//si contiene elementos imprime el ticket
+					JOptionPane.showMessageDialog(null,"Imprimiendo ticket","Compra Realizada",JOptionPane.INFORMATION_MESSAGE);
+					nombre_usuario_padre.setText("");
+					carrito_compra_padre.setText("");
+					cantidad_aPagar_enPadre.setText("");
 					
-				getFrmListaDeLa().dispose();
+					
+					
+				}
 				
 			}
 		});
-		finalizar_compra.setBounds(384, 213, 176, 30);
-		frmListaDeLa.getContentPane().add(finalizar_compra);
+		panel_5.add(btnImprimirTicket);
+		
+		JButton btnHacerCompra = new JButton("Hacer Compra");
+		btnHacerCompra.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(nombre_usuario_padre.getText().equals("")){//si no hay ningun usuario creado, niega el acceso
+					JOptionPane.showMessageDialog(null, "No ha añadido ningun usuario","Sin usuario", JOptionPane.ERROR_MESSAGE);
+				}
+				else 
+					if(!nombre_usuario_padre.getText().equals("")){//cuando se ha introducido un usuario se accede a la interfaz de compra
+						Hija r = new Hija(p);//dentro de un evento no se perimite crear una instancia de la clase
+						r.getFrmListaDeLa().setModal(true);
+						r.getFrmListaDeLa().setVisible(true);
+				}
+				
+			}
+		});
+		panel_5.add(btnHacerCompra);
+		
+		JButton btnSalir = new JButton("Salir");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) { 
+				Object[] textoOpciones = {"Si","No"};//declaracion de un objeto con dos cadenas de caracteres opcion "si" y opcion "no"
+				int opcion = JOptionPane.showOptionDialog(null,"¿Realmente desea salir del programa?","Salir del Programa"
+						,JOptionPane.YES_NO_CANCEL_OPTION,
+						JOptionPane.QUESTION_MESSAGE,null,textoOpciones,textoOpciones[0]);
+				//Si pulso el primer boton, 0
+				if(opcion == 0){
+				System.exit(0);
+				
+			}
+				else{
+					//Si pulso el segundo boton,1
+				}
+			}
+		});
+		panel_5.add(btnSalir);
 	}
-	
-	
+
 	//Getters y Setters
-
-	public JTextArea getLista_productos() {
-		return lista_productos;
+	
+	public JFrame getFrmCompron() {
+		return frmCompron;
 	}
 
-	public void setLista_productos(JTextArea lista_productos) {
-		this.lista_productos = lista_productos;
+	public void setFrmCompron(JFrame frmCompron) {
+		this.frmCompron = frmCompron;
 	}
 
-	public JTextField getUnidad_precio() {
-		return unidad_precio;
+	public JTextField getNombre_usuario_padre() {
+		return nombre_usuario_padre;
 	}
 
-	public void setUnidad_precio(JTextField unidad_precio) {
-		this.unidad_precio = unidad_precio;
+	public void setNombre_usuario_padre(JTextField nombre_usuario_padre) {
+		this.nombre_usuario_padre = nombre_usuario_padre;
 	}
 
-	public JDialog getFrmListaDeLa() {
-		return frmListaDeLa;
+	public JTextField getTextField_2() {
+		return cantidad_aPagar_enPadre;
 	}
 
-	public void setFrmListaDeLa(JDialog frmListaDeLa) {
-		this.frmListaDeLa = frmListaDeLa;
-	}
-
-	public JTextField getNombre_usuario_de_hija() {
-		return nombre_usuario_de_hija;
-	}
-
-	public void setNombre_usuario_de_hija(JTextField nombre_usuario_de_hija) {
-		this.nombre_usuario_de_hija = nombre_usuario_de_hija;
-	}
-
-	public JTextField getTotal_a_pagar_en_hija() {
-		return total_a_pagar_en_hija;
-	}
-
-	public void setTotal_a_pagar_en_hija(JTextField total_a_pagar_en_hija) {
-		this.total_a_pagar_en_hija = total_a_pagar_en_hija;
-	}
-
-	public JTextField getNombre_producto_hija() {
-		return nombre_producto_hija;
-	}
-
-	public void setNombre_producto_hija(JTextField nombre_producto_hija) {
-		this.nombre_producto_hija = nombre_producto_hija;
-	}
-
-	public JTextField getCantidad_precio() {
-		return unidad_precio;
-	}
-
-	public void setCantidad_precio(JTextField cantidad_precio) {
-		this.unidad_precio = cantidad_precio;
+	public void setTextField_2(JTextField textField_2) {
+		this.cantidad_aPagar_enPadre = textField_2;
 	}
 
 	public Padre getP() {
@@ -235,6 +237,31 @@ public class Hija {
 	public void setP(Padre p) {
 		this.p = p;
 	}
+
+	public JTextField getCantidad_aPagar_enPadre() {
+		return cantidad_aPagar_enPadre;
+	}
+
+	public void setCantidad_aPagar_enPadre(JTextField cantidad_aPagar_enPadre) {
+		this.cantidad_aPagar_enPadre = cantidad_aPagar_enPadre;
+	}
+
+	public JTextArea getCarrito_compra_padre() {
+		return carrito_compra_padre;
+	}
+
+	public void setCarrito_compra_padre(JTextArea carrito_compra_padre) {
+		this.carrito_compra_padre = carrito_compra_padre;
+	}
+
+	public JCheckBox getOpcion_descuento() {
+		return opcion_descuento;
+	}
+
+	public void setOpcion_descuento(JCheckBox opcion_descuento) {
+		this.opcion_descuento = opcion_descuento;
+	}
+
 	
 	
 }
